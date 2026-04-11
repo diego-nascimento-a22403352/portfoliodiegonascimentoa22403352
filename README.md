@@ -13,8 +13,8 @@ Este projeto consiste numa aplicação web desenvolvida em **Django**, concebida
 * Competências (Hard e Soft Skills)
 * Trabalhos Finais de Curso (TFCs)
 
-## ⚙️ Tecnologias Utilizadas
-* **Linguagem:** Python
-* **Framework:** Django
-* **Base de Dados:** SQLite (default)
-* **Controlo de Versões:** Git & GitHub
+---
+
+Nome de utilizador: admin
+
+Palavra-passe: admin
