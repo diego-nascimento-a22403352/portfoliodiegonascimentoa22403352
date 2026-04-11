@@ -32,3 +32,23 @@ class Tecnologia(models.Model):
 
     def __str__(self):
         return self.nome
+    
+class Projeto(models.Model):
+    titulo = models.CharField(max_length=100)
+    descricao = models.TextField()
+    imagem = models.ImageField(upload_to='projetos/')
+    video_demo = models.URLField(blank=True, null=True) # Coloquei blank=True para não ser obrigatório se um projeto não tiver vídeo
+    github_link = models.URLField()
+    uc = models.ForeignKey(UnidadeCurricular, on_delete=models.CASCADE, related_name='projetos')
+    tecnologias = models.ManyToManyField(Tecnologia, related_name='projetos')
+
+    def __str__(self):
+        return self.titulo
+
+class Competencia(models.Model):
+    nome = models.CharField(max_length=100)
+    categoria = models.CharField(max_length=100) # Exemplo: "Hard Skill" ou "Soft Skill"
+    projetos = models.ManyToManyField(Projeto, related_name='competencias', blank=True)
+
+    def __str__(self):
+        return f'{self.nome} ({self.categoria})'    

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Licenciatura, UnidadeCurricular, Tecnologia
+from .models import Licenciatura, UnidadeCurricular, Tecnologia, Projeto, Competencia
 
 class LicenciaturaAdmin(admin.ModelAdmin):
     list_display = ("nome", "instituicao", "ano_inicio", "ano_conclusao",)
@@ -17,6 +17,20 @@ class TecnologiaAdmin(admin.ModelAdmin):
     ordering = ("-nivel_interesse", "nome",) # O sinal de menos ordena do interesse mais alto para o mais baixo
     search_fields = ("nome",)
 
+class ProjetoAdmin(admin.ModelAdmin):
+    list_display = ("titulo", "uc", "github_link",)
+    ordering = ("titulo",)
+    search_fields = ("titulo", "descricao",)
+    list_filter = ("uc", "tecnologias",)
+
+class CompetenciaAdmin(admin.ModelAdmin):
+    list_display = ("nome", "categoria",)
+    ordering = ("categoria", "nome",)
+    search_fields = ("nome", "categoria",)
+    list_filter = ("categoria",)    
+
 admin.site.register(Licenciatura, LicenciaturaAdmin)
 admin.site.register(UnidadeCurricular, UnidadeCurricularAdmin)
 admin.site.register(Tecnologia, TecnologiaAdmin)
+admin.site.register(Projeto, ProjetoAdmin)
+admin.site.register(Competencia, CompetenciaAdmin)
