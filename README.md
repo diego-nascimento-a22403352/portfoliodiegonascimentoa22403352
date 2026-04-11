@@ -1,1 +1,8 @@
-# portfoliodiegonascimentoa22403352
+Nome: Diego Nascimento 
+
+Número: a22403352
+
+Superusuário:
+
+- Nome de usuário: admin 
+- Senha: djangodiego
