@@ -51,4 +51,20 @@ class Competencia(models.Model):
     projetos = models.ManyToManyField(Projeto, related_name='competencias', blank=True)
 
     def __str__(self):
-        return f'{self.nome} ({self.categoria})'    
+        return f'{self.nome} ({self.categoria})'
+    
+class TFC(models.Model):
+    titulo = models.CharField(max_length=255)
+    autores = models.CharField(max_length=255)
+    orientadores = models.CharField(max_length=255)
+    licenciaturas = models.CharField(max_length=255)
+    sumario = models.TextField()
+    palavras_chave = models.TextField()
+    areas = models.CharField(max_length=255)
+    tecnologias_usadas = models.CharField(max_length=255)
+    imagem = models.CharField(max_length=500) # Usamos CharField porque tem textos como "Sem imagem"
+    link_pdf = models.CharField(max_length=500) # Usamos CharField porque tem textos como "Sem PDF"
+    rating = models.IntegerField(default=3)
+
+    def __str__(self):
+        return self.titulo    

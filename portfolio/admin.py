@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Licenciatura, UnidadeCurricular, Tecnologia, Projeto, Competencia
+from .models import Licenciatura, UnidadeCurricular, Tecnologia, Projeto, Competencia, TFC
 
 class LicenciaturaAdmin(admin.ModelAdmin):
     list_display = ("nome", "instituicao", "ano_inicio", "ano_conclusao",)
@@ -29,6 +29,13 @@ class CompetenciaAdmin(admin.ModelAdmin):
     search_fields = ("nome", "categoria",)
     list_filter = ("categoria",)    
 
+class TFCAdmin(admin.ModelAdmin):
+    list_display = ("titulo", "autores", "licenciaturas", "rating",)
+    ordering = ("-rating", "titulo",)
+    search_fields = ("titulo", "autores", "tecnologias_usadas", "orientadores",)
+    list_filter = ("rating", "licenciaturas",)
+
+admin.site.register(TFC, TFCAdmin)  
 admin.site.register(Licenciatura, LicenciaturaAdmin)
 admin.site.register(UnidadeCurricular, UnidadeCurricularAdmin)
 admin.site.register(Tecnologia, TecnologiaAdmin)
