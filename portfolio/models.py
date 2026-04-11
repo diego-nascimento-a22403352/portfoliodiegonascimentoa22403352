@@ -1,6 +1,7 @@
 from django.db import models
 
 # Create your models here.
+
 class Licenciatura(models.Model):
     nome = models.CharField(max_length=100)
     instituicao = models.CharField(max_length=100)
@@ -22,3 +23,12 @@ class UnidadeCurricular(models.Model):
 
     def __str__(self):
         return f'{self.nome} ({self.ano_curricular}º Ano)'
+    
+class Tecnologia(models.Model):
+    nome = models.CharField(max_length=100)
+    logotipo = models.ImageField(upload_to='tecnologias/')
+    link_oficial = models.URLField()
+    nivel_interesse = models.IntegerField() # Exemplo: de 1 a 5
+
+    def __str__(self):
+        return self.nome
