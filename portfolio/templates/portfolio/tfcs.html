@@ -1,0 +1,17 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+    <h2>Trabalhos Finais de Curso (2025)</h2>
+    <section>
+        {% for tfc in tfcs %}
+            <article style="border: 1px solid #ccc; padding: 15px; margin-bottom: 15px;">
+                <h3>{{ tfc.titulo }}</h3>
+                <p><strong>Autores:</strong> {{ tfc.autores }}</p>
+                <p><strong>Orientadores:</strong> {{ tfc.orientadores }}</p>
+                <p>{{ tfc.sumario }}</p>
+            </article>
+        {% empty %}
+            <p>Nenhum TFC encontrado na base de dados.</p>
+        {% endfor %}
+    </section>
+{% endblock %}

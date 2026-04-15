@@ -1,0 +1,15 @@
+{% extends "portfolio/base.html" %}
+{% block content %}
+    <h2>As Minhas Competências</h2>
+    <ul>
+        {% for comp in competencias %}
+            <li><strong>{{ comp.nome }}</strong> ({{ comp.categoria }})
+                <ul>
+                    {% for projeto in comp.projetos.all %}
+                        <li>Usada no projeto: {{ projeto.titulo }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

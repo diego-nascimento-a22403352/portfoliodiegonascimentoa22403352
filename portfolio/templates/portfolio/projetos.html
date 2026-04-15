@@ -1,0 +1,26 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+    <h2>Os Meus Projetos</h2>
+    <section>
+        {% for projeto in projetos %}
+            <article style="border: 1px solid #ccc; padding: 15px; margin-bottom: 15px;">
+                <h3>{{ projeto.titulo }}</h3>
+                <p>{{ projeto.descricao }}</p>
+                
+                {% if projeto.link_github %}
+                    <p><a href="{{ projeto.link_github }}" target="_blank">Ver no GitHub</a></p>
+                {% endif %}
+
+                <h4>Tecnologias Usadas:</h4>
+                <ul>
+                    {% for tech in projeto.tecnologias.all %}
+                        <li>{{ tech.nome }}</li>
+                    {% empty %}
+                        <li>Sem tecnologias registadas.</li>
+                    {% endfor %}
+                </ul>
+            </article>
+        {% endfor %}
+    </section>
+{% endblock %}

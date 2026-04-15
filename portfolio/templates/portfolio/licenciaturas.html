@@ -1,0 +1,9 @@
+{% extends "portfolio/base.html" %}
+{% block content %}
+    <h2>Licenciaturas</h2>
+    <ul>
+        {% for lic in licenciaturas %}
+            <li><strong>{{ lic.nome }}</strong> ({{ lic.instituicao }}) - {{ lic.ano_inicio }} a {{ lic.ano_conclusao }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

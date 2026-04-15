@@ -1,0 +1,129 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+    background: #f4f6f8;
+    color: #1f2937;
+    line-height: 1.6;
+}
+
+/* --- Cabeçalho e Navegação --- */
+body > header {
+    background: #0f172a;
+    color: white;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+body > header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #f8fafc;
+}
+
+body > header nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+body > header nav a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+body > header nav a:hover {
+    color: #38bdf8;
+}
+
+/* --- Corpo Principal --- */
+main {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+}
+
+main > h2 {
+    font-size: 2rem;
+    color: #0f172a;
+    border-bottom: 3px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+/* --- Sistema de Grelha (Cartões) para Projetos e TFCs --- */
+section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+article {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0 !important; /* Remove aquela borda feia que pusemos no HTML */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+article h3 {
+    color: #0284c7;
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+}
+
+/* --- Estilo de Tags/Badges (Tecnologias) --- */
+article ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+article li {
+    background: #e0f2fe;
+    color: #0369a1;
+    padding: 0.3rem 0.8rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* --- Listas Gerais (Licenciaturas, UCs) --- */
+main > ul {
+    list-style: none;
+}
+
+main > ul > li {
+    background: white;
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+/* --- Rodapé --- */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: #0f172a;
+    color: #94a3b8;
+    margin-top: 4rem;
+}

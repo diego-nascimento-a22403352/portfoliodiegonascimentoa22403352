@@ -1,0 +1,17 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+    <h2>Tecnologias que domino</h2>
+    <ul>
+        {% for tech in tecnologias %}
+            <li>
+                <strong>{{ tech.nome }}</strong>
+                {% if tech.link_oficial %}
+                    - <a href="{{ tech.link_oficial }}" target="_blank">Site Oficial</a>
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>Ainda não há tecnologias registadas.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

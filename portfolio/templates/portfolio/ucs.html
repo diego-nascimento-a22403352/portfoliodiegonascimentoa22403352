@@ -1,0 +1,9 @@
+{% extends "portfolio/base.html" %}
+{% block content %}
+    <h2>Unidades Curriculares</h2>
+    <ul>
+        {% for uc in ucs %}
+            <li><strong>{{ uc.nome }}</strong> ({{ uc.ano_curricular }}º Ano) - Professor: {{ uc.docente_nome }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
