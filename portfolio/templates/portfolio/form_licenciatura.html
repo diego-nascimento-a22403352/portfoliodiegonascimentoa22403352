@@ -1,0 +1,10 @@
+{% extends "portfolio/base.html" %}
+{% block content %}
+    <h2>{{ acao }} Licenciatura</h2>
+    <form method="POST" style="background: transparent; padding: 20px; border: 1px solid #e5e7eb; border-radius: 8px;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" style="background: transparent; color: #374151; padding: 10px 20px; border: 1px solid #d1d5db; border-radius: 5px; cursor: pointer;">Guardar</button>
+        <a href="{% url 'licenciaturas' %}" style="margin-left: 15px; color: #9ca3af; text-decoration: none;">Cancelar</a>
+    </form>
+{% endblock %}

@@ -1,15 +1,34 @@
 {% extends "portfolio/base.html" %}
+
 {% block content %}
     <h2>As Minhas Competências</h2>
+    
+    <a href="{% url 'nova_competencia' %}" style="display: inline-block; margin-bottom: 20px; padding: 8px 15px; background: transparent; color: #374151; text-decoration: none; border: 1px solid #d1d5db; border-radius: 5px; font-size: 0.9em;">
+        + Adicionar Competência
+    </a>
+
     <ul>
         {% for comp in competencias %}
-            <li><strong>{{ comp.nome }}</strong> ({{ comp.categoria }})
-                <ul>
+            <li style="margin-bottom: 15px;">
+                <strong>{{ comp.nome }}</strong> ({{ comp.categoria }})
+                
+                <span style="margin-left: 15px;">
+                    <a href="{% url 'editar_competencia' comp.id %}" style="color: #374151; text-decoration: none; border: 1px solid #d1d5db; padding: 2px 8px; border-radius: 4px; font-size: 0.8em; transition: 0.2s;">
+                        Editar
+                    </a>
+                    <a href="{% url 'apagar_competencia' comp.id %}" style="color: #9ca3af; text-decoration: none; border: 1px solid #e5e7eb; padding: 2px 8px; border-radius: 4px; font-size: 0.8em; margin-left: 5px; transition: 0.2s;">
+                        Apagar
+                    </a>
+                </span>
+
+                <ul style="margin-top: 5px;">
                     {% for projeto in comp.projetos.all %}
-                        <li>Usada no projeto: {{ projeto.titulo }}</li>
+                        <li style="color: #64748b; font-size: 0.9em;">Usada no projeto: {{ projeto.titulo }}</li>
                     {% endfor %}
                 </ul>
             </li>
+        {% empty %}
+            <li>Ainda não há competências registadas.</li>
         {% endfor %}
     </ul>
 {% endblock %}

@@ -1,0 +1,14 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+    <h2>Adicionar Novo Projeto</h2>
+    
+    <form method="POST" style="background: white; padding: 20px; border-radius: 8px;">
+        {% csrf_token %} {{ form.as_p }}
+        
+        <button type="submit" style="background: #0284c7; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+            Guardar Projeto
+        </button>
+        <a href="{% url 'projetos' %}" style="margin-left: 15px; color: #64748b; text-decoration: none;">Cancelar</a>
+    </form>
+{% endblock %}

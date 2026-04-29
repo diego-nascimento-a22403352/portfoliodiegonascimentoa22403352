@@ -24,8 +24,18 @@ class UnidadeCurricular(models.Model):
     def __str__(self):
         return f'{self.nome} ({self.ano_curricular}º Ano)'
     
+class TipoTecnologia(models.Model):
+    nome = models.CharField(max_length=100) # Exemplo: "Frontend", "Backend", "Base de Dados"
+
+    def __str__(self):
+        return self.nome    
+    
 class Tecnologia(models.Model):
     nome = models.CharField(max_length=100)
+    # Novos campos adicionados:
+    tipo = models.ForeignKey(TipoTecnologia, on_delete=models.SET_NULL, null=True, blank=True, related_name='tecnologias')
+    descricao = models.TextField(blank=True, null=True, help_text="Descrição do que a tecnologia faz e o que gostas/não gostas nela.")
+    # Campos que já tinhas:
     logotipo = models.ImageField(upload_to='tecnologias/')
     link_oficial = models.URLField()
     nivel_interesse = models.IntegerField() # Exemplo: de 1 a 5

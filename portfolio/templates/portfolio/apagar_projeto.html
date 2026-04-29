@@ -1,0 +1,17 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+    <h2>Apagar Projeto</h2>
+    <div style="background: #fee2e2; padding: 20px; border-radius: 8px; border: 1px solid #f87171;">
+        <p>Tens a certeza que pretendes apagar o projeto <strong>{{ projeto.titulo }}</strong>?</p>
+        <p>Esta ação não pode ser desfeita!</p>
+        
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" style="background: #ef4444; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px;">
+                Sim, quero apagar
+            </button>
+            <a href="{% url 'projetos' %}" style="margin-left: 15px; color: #1f2937; text-decoration: none;">Cancelar</a>
+        </form>
+    </div>
+{% endblock %}

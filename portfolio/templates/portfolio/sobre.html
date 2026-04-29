@@ -1,0 +1,68 @@
+{% extends "portfolio/base.html" %}
+{% load static %} {% load markdownify %} 
+
+{% block content %}
+<article style="max-width: 900px; margin: 0 auto; line-height: 1.6;">
+    <h1>Sobre esta Aplicação</h1>
+
+    <section style="margin-bottom: 40px;">
+        <h2>1. Arquitetura MVT do Django</h2>
+        <p>O Django utiliza o padrão MVT (Model-View-Template):</p>
+        <ul>
+            <li><strong>Model:</strong> Gere a base de dados e a estrutura dos dados.</li>
+            <li><strong>View:</strong> Contém a lógica de negócio e decide o que mostrar ao utilizador.</li>
+            <li><strong>Template:</strong> É a parte visual (HTML) que o utilizador vê.</li>
+        </ul>
+        
+        <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; text-align: center;">
+            <p style="color: #64748b;">[O vídeo tutorial explicando a criação do formulário será inserido aqui via iframe] </p>
+        </div>
+    </section>
+
+    <section style="margin-bottom: 40px;">
+        <h2>2. Modelação</h2>
+        <p>A estrutura da base de dados foi desenhada para suportar as entidades do portfólio (Projetos, UC, Tecnologias, etc.).</p>
+        <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 20px;">
+             <img src="/media/makingof/diagrama_der.jpeg" alt="Diagrama Entidade-Relação" style="max-width: 100%; border-radius: 8px;">
+        </div>
+        
+        <h3>Código models.py</h3>
+        <pre style="background: #1e293b; color: #f8fafc; padding: 15px; border-radius: 5px; overflow-x: auto; font-family: monospace;">
+from django.db import models
+
+class TipoTecnologia(models.Model):
+    nome = models.CharField(max_length=100)
+
+class Tecnologia(models.Model):
+    nome = models.CharField(max_length=100)
+    tipo = models.ForeignKey(TipoTecnologia, on_delete=models.SET_NULL, null=True)
+    descricao = models.TextField(blank=True)
+    # ... restantes campos
+        </pre>
+    </section>
+
+    <section style="margin-bottom: 40px;">
+        <h2>3. Tecnologias Utilizadas</h2>
+        <p>Para construir esta aplicação, foram utilizadas as seguintes tecnologias:</p>
+        <ul>
+            <li><strong>Backend:</strong> Django (Python)</li>
+            <li><strong>Frontend:</strong> HTML5, CSS3</li>
+            <li><strong>Ferramentas:</strong> Git, GitHub, VS Code / Codespaces</li>
+        </ul>
+    </section>
+
+    <section style="margin-bottom: 40px;">
+        <h2>4. Repositório GitHub</h2>
+        <p>O controlo de versões permite manter um histórico detalhado de todas as alterações feitas no projeto, facilitando a recuperação de código e o trabalho colaborativo.</p>
+        <a href="https://github.com/diego-nascimento-a22403352/portfoliodiegonascimentoa22403352" target="_blank" style="color: #0284c7; font-weight: bold;">Ver Repositório no GitHub 🔗 </a>
+    </section>
+
+    <section style="margin-bottom: 40px; padding: 20px; border-top: 2px solid #e5e7eb;">
+        <h2>6. Making-Of</h2>
+        <div class="making-of-content">
+            {{ making_of | markdownify }}
+        </div>
+    </section>
+
+</article>
+{% endblock %}

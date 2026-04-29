@@ -1,0 +1,14 @@
+{% extends "portfolio/base.html" %}
+{% block content %}
+    <h2>Apagar {{ tipo }}</h2>
+    <div style="background: transparent; padding: 20px; border-radius: 8px; border: 1px solid #d1d5db;">
+        <p>Tens a certeza que pretendes apagar "{{ item }}"?</p>
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" style="background: transparent; color: #374151; padding: 10px 20px; border: 1px solid #d1d5db; border-radius: 5px; cursor: pointer; margin-top: 10px; transition: 0.2s;">
+                Confirmar
+            </button>
+            <a href="{% url url_cancelar %}" style="margin-left: 15px; color: #9ca3af; text-decoration: none;">Cancelar</a>
+        </form>
+    </div>
+{% endblock %}
