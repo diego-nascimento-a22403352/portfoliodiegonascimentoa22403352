@@ -1,4 +1,4 @@
-# 🛠️ Making Of - Diário de Bordo (Ficha 6)
+# 🛠️ Making Of - Diário de Bordo Completo (Ficha 6 e Ficha 8)
 
 **Autor:** Diego Nascimento  
 **Número:** a22403352  
@@ -10,7 +10,7 @@
 O desenvolvimento do portfólio começou com uma fase de rascunho em papel. O objetivo foi definir a estrutura de dados antes de tocar em qualquer linha de código.
 * **Diagrama Entidade-Relacionamento (DER):** Identifiquei as entidades principais e as suas relações (ex: um Projeto pode ter várias Tecnologias, e uma Unidade Curricular pertence a uma Licenciatura).
 
-![Diagrama DER](media/makingof/diagrama_der.jpg) 
+![Diagrama DER](/media/makingof/diagrama_der.jpeg) 
 
 ## 2. 🏗️ Arquitetura e Controlo de Versões
 Diferente de exercícios anteriores, tomei a decisão estratégica de:
@@ -41,3 +41,27 @@ for item in dados:
         continue
         
     TFC.objects.create(...)
+```
+
+## 5. 📝 Ficha 8: Desvendando o Poder dos Formulários
+Nesta etapa, o objetivo foi criar páginas que permitissem gerir os conteúdos da aplicação através de operações CRUD (Create, Read, Update, Delete).
+
+### 🛠️ Implementação de CRUD e ModelForms
+Implementei formulários para as classes de Projetos, Tecnologias, Competências e Formação.
+* **Dificuldades:** A gestão de ficheiros media em formulários de edição foi desafiante, exigindo o uso de `request.FILES` no backend e `enctype="multipart/form-data"` no frontend.
+* **Vantagens do Django:** A utilização de `ModelForms` provou ser extremamente vantajosa, permitindo gerar interfaces de entrada de dados seguras e validadas com poucas linhas de código.
+
+## 6. 📄 Modelação Avançada e Tecnologias
+Conforme solicitado, aprimorei a classe `Tecnologia` para incluir uma descrição detalhada e uma categorização por tipos.
+* **Nova Classe TipoTecnologia:** Criei esta classe para estruturar as tecnologias em categorias como Frontend, Backend, Base de Dados, entre outras.
+* **Reflexão Técnica:** Esta alteração permitiu uma organização mais semântica do portfólio, facilitando a navegação do utilizador e a gestão administrativa dos dados.
+
+## 7. ✨ Página "Sobre" e Markdownify
+Criei uma página técnica dedicada a explicar a arquitetura MVT do Django e a modelação da aplicação.
+* **Markdownify:** Integrei este módulo para converter este diário de bordo de Markdown para HTML automaticamente, garantindo que a formatação original fosse mantida sem necessidade de duplicar esforço de escrita.
+
+## 8. 🎥 Vídeo-Tutorial e Demonstração
+Gravei um vídeo-tutorial explicando detalhadamente os passos para a construção da página de criação de novos projetos, abordando desde o `models.py` até ao template HTML final. O vídeo demonstra o funcionamento da rota, a lógica da view e a interação com a base de dados.
+
+## 9. 🐙 Repositório GitHub
+O uso do GitHub foi essencial para manter o controlo de versões granulado. Esta tecnologia trouxe vantagens como a rastreabilidade das alterações e a facilidade de colaboração em ambiente de desenvolvimento cloud.
