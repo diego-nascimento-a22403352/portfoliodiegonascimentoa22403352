@@ -3,9 +3,13 @@
 {% block content %}
     <h2>Os Meus Projetos</h2>
     
-    <a href="{% url 'novo_projeto' %}" style="display: inline-block; margin-bottom: 20px; padding: 10px 15px; background: #22c55e; color: white; text-decoration: none; border-radius: 5px;">
-        + Adicionar Projeto
-    </a>
+    {% for group in request.user.groups.all %}
+        {% if group.name == 'gestor-portfolio' %}
+            <a href="{% url 'novo_projeto' %}" style="display: inline-block; margin-bottom: 20px; padding: 10px 15px; background: #22c55e; color: white; text-decoration: none; border-radius: 5px;">
+                + Adicionar Projeto
+            </a>
+        {% endif %}
+    {% endfor %}
     
     <section>
         {% for projeto in projetos %}
@@ -13,22 +17,26 @@
                 
                 <h3 style="margin-top: 0; margin-bottom: 10px;">{{ projeto.titulo }}</h3>
                 
-                <div style="margin-bottom: 15px;">
-                    <a href="{% url 'editar_projeto' projeto.id %}" 
-                       style="color: #374151; background: transparent; padding: 5px 12px; text-decoration: none; border: 1px solid #d1d5db; border-radius: 4px; font-size: 0.85em; transition: 0.2s;">
-                       Editar
-                    </a>
-                    
-                    <a href="{% url 'apagar_projeto' projeto.id %}" 
-                       style="color: #9ca3af; background: transparent; padding: 5px 12px; text-decoration: none; border: 1px solid #e5e7eb; border-radius: 4px; font-size: 0.85em; margin-left: 8px; transition: 0.2s;">
-                       Apagar
-                    </a>
-                </div>
+                {% for group in request.user.groups.all %}
+                    {% if group.name == 'gestor-portfolio' %}
+                    <div style="margin-bottom: 15px;">
+                        <a href="{% url 'editar_projeto' projeto.id %}" 
+                           style="color: #374151; background: transparent; padding: 5px 12px; text-decoration: none; border: 1px solid #d1d5db; border-radius: 4px; font-size: 0.85em; transition: 0.2s;">
+                           Editar
+                        </a>
+                        
+                        <a href="{% url 'apagar_projeto' projeto.id %}" 
+                           style="color: #9ca3af; background: transparent; padding: 5px 12px; text-decoration: none; border: 1px solid #e5e7eb; border-radius: 4px; font-size: 0.85em; margin-left: 8px; transition: 0.2s;">
+                           Apagar
+                        </a>
+                    </div>
+                    {% endif %}
+                {% endfor %}
                 
                 <p>{{ projeto.descricao }}</p>
                 
-                {% if projeto.link_github %}
-                    <p><a href="{{ projeto.link_github }}" target="_blank" style="color: #0284c7; text-decoration: none;">Ver no GitHub</a></p>
+                {% if projeto.github_link %}
+                    <p><a href="{{ projeto.github_link }}" target="_blank" style="color: #0284c7; text-decoration: none;">Ver no GitHub</a></p>
                 {% endif %}
 
                 <h4 style="margin-bottom: 5px;">Tecnologias Usadas:</h4>

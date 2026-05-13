@@ -1,0 +1,20 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+<div style="max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #e5e7eb; border-radius: 8px;">
+    <h2 style="text-align: center; margin-bottom: 20px;">Criar Conta</h2>
+    
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <button type="submit" style="width: 100%; padding: 10px; background: #22c55e; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; margin-top: 10px;">
+            Registar
+        </button>
+    </form>
+    
+    <p style="text-align: center; margin-top: 20px; font-size: 0.9em;">
+        Já tens conta? <a href="{% url 'login' %}" style="color: #0284c7;">Faz Login aqui</a>
+    </p>
+</div>
+{% endblock %}

@@ -46,3 +46,4 @@ urlpatterns = [
 
     path('sobre/', views.sobre_view, name='sobre'),
 ]
+

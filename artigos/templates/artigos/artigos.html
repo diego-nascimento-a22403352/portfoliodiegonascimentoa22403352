@@ -1,0 +1,31 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+<h2>Artigos Tecnológicos</h2>
+
+{% if request.user.is_authenticated %}
+    {% for group in request.user.groups.all %}
+        {% if group.name == 'autores' %}
+            <a href="{% url 'novo_artigo' %}" style="display: inline-block; margin-bottom: 20px; padding: 10px 15px; background: #22c55e; color: white; text-decoration: none; border-radius: 5px;">+ Criar Novo Artigo</a>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+<section style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+    {% for artigo in artigos %}
+        <article style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; background: white;">
+            {% if artigo.fotografia %}
+                <img src="{{ artigo.fotografia.url }}" alt="{{ artigo.titulo }}" style="width: 100%; h-eight: 200px; object-fit: cover;">
+            {% endif %}
+            <div style="padding: 15px;">
+                <h3>{{ artigo.titulo }}</h3>
+                <p style="font-size: 0.9em; color: #6b7280;">Por {{ artigo.autor.username }} em {{ artigo.data_criacao|date:"d/m/Y" }}</p>
+                <p>{{ artigo.texto|truncatewords:20 }}</p>
+                <a href="{% url 'artigo_detalhe' artigo.id %}" style="color: #0284c7; font-weight: bold; text-decoration: none;">Ler mais →</a>
+            </div>
+        </article>
+    {% empty %}
+        <p>Ainda não foram publicados artigos.</p>
+    {% endfor %}
+</section>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 0 auto;">
+    <h2>{{ acao }}</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" style="padding: 10px 20px; background: #0284c7; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            Guardar Artigo
+        </button>
+        <a href="{% url 'artigos' %}" style="margin-left: 10px; color: #6b7280;">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

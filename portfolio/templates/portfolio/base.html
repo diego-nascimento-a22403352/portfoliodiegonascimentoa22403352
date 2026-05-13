@@ -6,14 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>O Meu Portfólio</title>
     <link rel="stylesheet" href="{% static 'portfolio/styles.css' %}">
-    </head>
+</head>
 <body>
     <header>
-        <h1>Diego Nascimento - Portfólio</h1>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h1>Diego Nascimento - Portfólio</h1>
+            
+            <div style="font-size: 0.9em;">
+                {% if request.user.is_authenticated %}
+                    <span>Olá, <strong>{{ request.user.username }}</strong>!</span>
+                    <a href="{% url 'logout' %}" style="margin-left: 10px; color: #ef4444; text-decoration: none;">Logout</a>
+                {% else %}
+                    <a href="{% url 'login' %}" style="color: #0284c7; text-decoration: none; font-weight: bold;">Login</a> | 
+                    <a href="{% url 'registo' %}" style="color: #374151; text-decoration: none;">Registar</a>
+                {% endif %}
+            </div>
+        </div>
+        
         <nav>
             <a href="{% url 'projetos' %}">Projetos</a>
             <a href="{% url 'tfcs' %}">TFCs</a>
             <a href="{% url 'tecnologias' %}">Tecnologias</a>
+            <a href="{% url 'artigos' %}">Artigos (Blog)</a> 
             <a href="{% url 'licenciaturas' %}">Licenciaturas</a>
             <a href="{% url 'ucs' %}">Disciplinas (UCs)</a>
             <a href="{% url 'competencias' %}">Competências</a>

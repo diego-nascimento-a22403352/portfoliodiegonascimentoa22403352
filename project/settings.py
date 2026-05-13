@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'portfolio',
     'escola',
     'markdownify.apps.MarkdownifyConfig',
+    'accounts',
+    'artigos',
 ]
 
 MIDDLEWARE = [
@@ -134,3 +136,11 @@ MARKDOWNIFY = {
         ]
     }
 }
+
+# Redirecionamentos de Autenticação
+LOGIN_REDIRECT_URL = 'projetos'
+LOGOUT_REDIRECT_URL = 'projetos'
+LOGIN_URL = 'login'
+
+# Para testes, os emails aparecem na consola do VS Code
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

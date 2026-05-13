@@ -1,0 +1,8 @@
+{% extends "portfolio/base.html" %}
+{% block content %}
+<div style="text-align: center; margin-top: 50px; color: #ef4444;">
+    <h2>Link Inválido ou Expirado ❌</h2>
+    <p>Por favor, pede um novo link na página de login.</p>
+    <a href="{% url 'magic_request' %}">Tentar novamente</a>
+</div>
+{% endblock %}

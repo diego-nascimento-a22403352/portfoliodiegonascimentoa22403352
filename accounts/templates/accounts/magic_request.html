@@ -1,0 +1,12 @@
+{% extends "portfolio/base.html" %}
+{% block content %}
+<div style="max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #e5e7eb; border-radius: 8px;">
+    <h2>Entrar com Link Mágico</h2>
+    <p>Introduz o teu email e enviaremos um link de acesso instantâneo.</p>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="email" name="email" placeholder="O teu email" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
+        <button type="submit" style="width: 100%; padding: 10px; background: #0284c7; color: white; border: none; border-radius: 5px;">Enviar Link</button>
+    </form>
+</div>
+{% endblock %}
